@@ -16,10 +16,6 @@ jobs:
         uses: actions/npm@master
         with:
           args: run test
-      - name: npm lint
-        uses: actions/npm@master
-        with:
-          args: run lint
       - name: docker build
         uses: actions/docker/cli@master
         with:
