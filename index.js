@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('client-sessions')
 
 const app = express();
+const path = require("path")
 
 const router = express.Router();
 
