@@ -4,13 +4,13 @@ on:
     branches: [master]
 jobs:
   build-and-publish:
-    name: build and publish to docker 
+    name: build and publish to docker
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: Login to DockerHub Registry
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD}}
       - name: Docker Build
-        run: docker build -t push cyberbot/node-express-request-response-test:latest .
+        run: docker build -t cyberbot/node-express-request-response-test:latest .
       - name: image push to Docker Hub
         run: docker push cyberbot/node-express-request-response-test:latest
