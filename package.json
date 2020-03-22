@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node app.js",
-    "test": "jest"
+    "test": "ava && jest"
   },
   "devDependencies": {
     "ava": "^1.2.1",
