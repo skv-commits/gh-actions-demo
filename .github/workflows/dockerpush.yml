@@ -8,16 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: docker build
-        uses: actions/docker/cli@master
-        with:
-          args: build -t cyberbot/node-express-request-response-test:latest .
-      - name: docker login
-        uses: actions/docker/login@master
-        env:
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      - name: docker push
-        uses: actions/docker/cli@master
-        with:
-          args: push cyberbot/node-express-request-response-test:latest
+      - name: Login to DockerHub Registry
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      - name: Docker Build
+        run: docker build -t push cyberbot/node-express-request-response-test:latest .
+      - name: image push to Docker Hub
+        run: docker push cyberbot/node-express-request-response-test:latest
